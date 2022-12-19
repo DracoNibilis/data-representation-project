@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Main Page</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<style type="text/css">
+		<!-- Font-face declaration -->
+		@font-face {font-family: "Viner Hand ITC"; src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot"); src: url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.woff") format("woff"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/99d504622af69baa79ef84fad6985031.svg#Viner Hand ITC") format("svg"); 
+		} 
+		
+        body { 
+		margin: 0 auto;
+		width:1000px;
+		background-color: black;
+		font-family: "Viner Hand ITC";
+		}
+		h1 { 
+			color: white;
+		}
+
+		p { 
+			color: white;
+		}
+		ul {
+			color: white;
+		}
+		table {
+			color: white;
+			width:1000px;
+			padding: 0;
+			border: 10;
+			height: 100px;
+			background-color: black;
+			font-family: "Lucida Console", "Courier New", monospace;
+			font-size: 20px;
+		}
+
+
+
+    </style>
+<body>
+
+	<!-- Header text -->
+	<h1 align="center"> PLANETS CONTEST </h1>
+	<!-- Top Image -->
+	<img src="images/planets.jpg" alt="Plantes_image">
+	<!-- Text for header 2 -->
+	<h2 id="planets" align="center"> --== PLANETS ==--</h2>
+	
+	<!-- Table of Buttons To Other Pages -->
+	<table border:30px solid black>
+		<tr>
+			<!-- Button for Page with Results -->
+			<td align="center" width="250"><a href="main_page.html"><img  src="images/botton_test.jpg"></a></td>
+
+		</tr>
+		
+	</table>
+	<!-- Planets-->
+	<p> RANKING OF PLANETS.
+	</p>
+	<div> CHOOSE YOUR FAVORITE PLANET:
+		<!-- List of page elements -->
+		<table border="1">
+			<tr>
+				<th> PLANET </th>
+				<th> SIZE </th>
+				<th> MOONS</th>
+				<th> DISTANCE</th>
+				<th> VOTE</th>
+				<th> UPDATE</th>
+				<th> DELETE</th>
+			</tr>
+			
+			<tr>
+				<td> MERCURY </td>
+				<td> 0.055 </td>
+				<td> 0 </td>
+				<td> 45.9–88.0 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> VENUS </td>
+				<td> 0.815 </td>
+				<td> 0 </td>
+				<td> 107.4–108.9 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> EARTH </td>
+				<td> 1 </td>
+				<td> 1 </td>
+				<td> 147.1–152.1 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> MARS </td>
+				<td> 0.107 </td>
+				<td> 2 </td>
+				<td> 206.7–249.2 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> JUPITER </td>
+				<td> 318 </td>
+				<td> 80 </td>
+				<td> 45.9–88.0 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> SATURN </td>
+				<td> 95 </td>
+				<td> 83 </td>
+				<td> 1.3576–1.5065 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> URANUS </td>
+				<td> 14 </td>
+				<td> 27 </td>
+				<td> 2.733–3.001 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> NEPTUNE </td>
+				<td> 17 </td>
+				<td> 14 </td>
+				<td> 4.471–4.558 million km</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+			<tr>
+				<td> PLANET 9 </td>
+				<td> ??? </td>
+				<td> ???</td>
+				<td> ???</td>
+				<td> vote</td>
+				<td><button>update</button></td>
+				<td><button>delete</button></td>
+			</tr>
+			
+		</table>
+	</div>
+	
+	<div>
+
+	<p>UPGRADE / CREATE YOUR OWN PLANET:</p>
+	<p>
+		PLANET <input type="text" name="name"><br/>
+		SIZE <input type="number" name="size"><br/>
+		MOONS <input type="number" name="moon"><br/>
+		DISTANCE <input type="text" name="distance"><br/>
+		<span><button>CREATE</button></span>
+		<span><button>UPDATE</button></span>
+	</p>	
+	</div>
+
+	<!-- Link to source page --> 
+	<p align="center"> === All Rights Reserved <a href="https://solarsystem.nasa.gov/solar-system/sun/overview/">NASA</a> === 
+	
+	</p>
+
+</body>
+<script>
+	function getAll(callback){
+		$.ajax({
+			"url": "http://127.0.0.1:5000/main_page_2.html",
+			"method": "GET",
+			"data":"",
+			"dataType": "JSON",
+			"success":function(result){
+			callback(result)
+			},
+			"error":function(xhr,status,error){
+				console.log("error: "+status+" msg: "+error);
+				}
+			});
+	}
+	
+	function processGetAll(result){
+		console.log("in process")
+		console.log(result)
+	}
+	getAll(processGetAll)
+</script>
+</html>
