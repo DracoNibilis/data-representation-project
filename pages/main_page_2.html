@@ -49,7 +49,7 @@
 	<!-- Text for header 2 -->
 	<h2 id="planets" align="center"> --== PLANETS ==--</h2>
 	
-	<!-- Table of Buttons To Other Pages -->
+	<!-- Button for ther page - in table -->
 	<table border:30px solid black>
 		<tr>
 			<!-- Button for Page with Results -->
@@ -58,12 +58,15 @@
 		</tr>
 		
 	</table>
+	
 	<!-- Planets-->
-	<p> RANKING OF PLANETS.
-	</p>
+	<p> RANKING OF PLANETS.</p>
+	
+	<div><button id="buttonShowCreate" onclick=showCreate()>CREATE</button></div>
 	<div> CHOOSE YOUR FAVORITE PLANET:
+	
 		<!-- List of page elements -->
-		<table border="1">
+		<table class="table" id="planetTable">
 			<tr>
 				<th> PLANET </th>
 				<th> SIZE </th>
@@ -167,19 +170,21 @@
 		</table>
 	</div>
 	
-	<div>
-
 	<p>UPGRADE / CREATE YOUR OWN PLANET:</p>
-	<p>
+	<div id="createUpdateForm" style="display:none">
 		PLANET <input type="text" name="name"><br/>
 		SIZE <input type="number" name="size"><br/>
-		MOONS <input type="number" name="moon"><br/>
+		MOONS <input type="number" name="moons"><br/>
 		DISTANCE <input type="text" name="distance"><br/>
-		<span><button>CREATE</button></span>
-		<span><button>UPDATE</button></span>
-	</p>	
+		<span><button id="createLabel" onclick="doCreate()">CREATE</button></span>
+		<span><button id="updateLabel" onclick="doUpdate()">UPDATE</button></span>	
 	</div>
-
+	
+	<h2>
+	<span id="createLabel">CREATE A</span>
+	<span id="updateLabel" style="display:none">UPDATE THIS</span> PLANET
+	<h2>
+	
 	<!-- Link to source page --> 
 	<p align="center"> === All Rights Reserved <a href="https://solarsystem.nasa.gov/solar-system/sun/overview/">NASA</a> === 
 	
@@ -187,6 +192,17 @@
 
 </body>
 <script>
+	function showCreate(){
+		document.getElementById("buttonShowCreate").style.display="none"
+		document.getElementById("planetTable").style.display="none"
+		
+		document.getElementById("createLabel").style.display="inline"
+		document.getElementById("updateLabel").style.display="none"
+		
+		document.getElementById("doCreate").style.display="block"
+		document.getElementById("doUpdate").style.display="none"
+		
+	}
 	function getAll(callback){
 		$.ajax({
 			"url": "http://127.0.0.1:5000/main_page_2.html",
@@ -201,11 +217,50 @@
 				}
 			});
 	}
+
 	
 	function processGetAll(result){
 		console.log("in process")
-		console.log(result)
+		for(planet of result){
+			diplayPlanet = {}
+			displayPlanet.name = planet.name
+			displayPlanet.size = planet.size
+			displayPlanet.moons = planet.moons
+			displayPlanet.distance = planet.distance
+			console.log(displayPlanet)
+		}
 	}
 	getAll(processGetAll)
+	
+	function createPlanet(planet, callback){
+		$.ajax({
+			"url": "http://127.0.0.1:5000/main_page_2.html",
+			"method": "POST",
+			"data":JSON.stringify(planet),
+			"dataType": "JSON",
+			contentType: "application/json; charset=utf-8",
+			"success":function(result){
+			callback(result)
+			},
+			"error":function(xhr,status,error){
+				console.log("error: "+status+" msg: "+error);
+				}
+		});
+	}
+	
+	function processCreatePlanet(result){
+		console.log(result)
+			for(planet of result){
+			diplayPlanet = {}
+			displayPlanet.name = planet.name
+			displayPlanet.size = planet.size
+			displayPlanet.moons = planet.moons
+			displayPlanet.distance = planet.distance
+			console.log(displayPlanet)
+		}
+	}
+	
+	planet = {"name": "PROXIMA B", "size": 0.6, "moons": 2, "distance": "45.9–88.0 million km" }
+	createPlanet(planet, processCreatePlanet)
 </script>
 </html>
