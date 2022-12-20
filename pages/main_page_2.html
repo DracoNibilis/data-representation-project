@@ -73,7 +73,7 @@
 	<div>
 		<!-- List of page elements -->
 		<table class="table" id="planetTable">
-			<tr id="0">
+			<tr id="TITLE">
 				<th> PLANET </th>
 				<th> SIZE </th>
 				<th> MOONS</th>
@@ -83,94 +83,94 @@
 				<th> DELETE</th>
 			</tr>
 			
-			<tr id="1">
-				<td> MERCURY </td>
-				<td> 0.055 </td>
-				<td> 0 </td>
-				<td> 45.9–88.0 million km</td>
+			<tr id="MERCURY">
+				<td>MERCURY</td>
+				<td>0.055</td>
+				<td>0</td>
+				<td>45.9–88.0 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="2">
-				<td> VENUS </td>
-				<td> 0.815 </td>
-				<td> 0 </td>
-				<td> 107.4–108.9 million km</td>
+			<tr id="VENUS">
+				<td>VENUS</td>
+				<td>0.815</td>
+				<td>0</td>
+				<td>107.4–108.9 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="3">
-				<td> EARTH </td>
-				<td> 1 </td>
-				<td> 1 </td>
-				<td> 147.1–152.1 million km</td>
+			<tr id="EARTH">
+				<td>EARTH</td>
+				<td>1</td>
+				<td>1</td>
+				<td>147.1–152.1 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="4">
-				<td> MARS </td>
-				<td> 0.107 </td>
-				<td> 2 </td>
-				<td> 206.7–249.2 million km</td>
+			<tr id="MARS">
+				<td>MARS</td>
+				<td>0.107</td>
+				<td>2</td>
+				<td>206.7–249.2 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="5">
-				<td> JUPITER </td>
-				<td> 318 </td>
-				<td> 80 </td>
-				<td> 45.9–88.0 million km</td>
+			<tr id="JUPITER">
+				<td>JUPITER</td>
+				<td>318</td>
+				<td>80</td>
+				<td>45.9–88.0 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="6">
-				<td> SATURN </td>
-				<td> 95 </td>
-				<td> 83 </td>
-				<td> 1.3576–1.5065 million km</td>
+			<tr id="SATURN">
+				<td>SATURN</td>
+				<td>95</td>
+				<td>83</td>
+				<td>1.3576–1.5065 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="7">
-				<td> URANUS </td>
-				<td> 14 </td>
-				<td> 27 </td>
-				<td> 2.733–3.001 million km</td>
+			<tr id="URANUS">
+				<td>URANUS</td>
+				<td>14</td>
+				<td>27</td>
+				<td>2.733–3.001 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="8">
-				<td> NEPTUNE </td>
-				<td> 17 </td>
-				<td> 14 </td>
-				<td> 4.471–4.558 million km</td>
+			<tr id="NEPTUNE">
+				<td>NEPTUNE</td>
+				<td>17</td>
+				<td>14</td>
+				<td>4.471–4.558 million km</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
-			<tr id="9">
-				<td> PLANET 9 </td>
-				<td> ??? </td>
-				<td> ???</td>
-				<td> ???</td>
+			<tr id="PLANET 9">
+				<td>PLANET 9</td>
+				<td>???</td>
+				<td>???</td>
+				<td>???</td>
 				<td><button onclick="vote">vote</button></td>
 				<td><button onclick="showUpdate(this)">update</button></td>
-				<td><button>delete</button></td>
+				<td><button onclick="doDelete(this)">delete</button></td>
 			</tr>
 			
 		</table>
@@ -221,8 +221,8 @@
 		document.getElementById("buttonShowCreate").style.display="none"
 		document.getElementById("planetTable").style.display="none"
 		
-		rowElement = buttonElement.parentNode.parentNode
-		planet = getPlanetFromRow(rowElement)
+		var rowElement = buttonElement.parentNode.parentNode
+		var planet = getPlanetFromRow(rowElement)
 		populateFormWithPlanet(planet)
 		console.log(planet)
 		
@@ -253,8 +253,7 @@
 		planet.size = form.querySelector('input[name="size"]').value
 		planet.moons = form.querySelector('input[name="moons"]').value
 		planet.distance = form.querySelector('input[name="distance"]').value
-		
-		//console.log(JSON.stringify(planet))
+
 		return planet
 	}
 	
@@ -270,6 +269,7 @@
 	function addPlanetToTable(planet){
 		var tableElement = document.getElementById('planetTable')
 		var rowElement = tableElement.insertRow(-1)
+		rowElement.setAttribute('id', planet.name)
 		
 		var cell1 = rowElement.insertCell(0)
 		cell1.innerHTML = planet.name
@@ -277,11 +277,12 @@
 		cell2.innerHTML = planet.size
 		var cell3 = rowElement.insertCell(2)
 		cell3.innerHTML = planet.moons
-		var cell4 = rowElement.insertCell(3)
+		var cell4= rowElement.insertCell(3)
 		cell4.innerHTML = planet.distance
 		// add cell for voting 
 		var cell5 = rowElement.insertCell(4)
 		cell5.innerHTML = '<button onclick="vote">vote</button>'
+		
 		var cell6 = rowElement.insertCell(5)
 		cell6.innerHTML = '<button onclick="showUpdate(this)">update</button>'
 		var cell7 = rowElement.insertCell(6)
@@ -300,7 +301,7 @@
 	
 	
 	function setPlanetInRow(rowElement, planet){
-		var planet = {}
+		//var planet = {}
 		rowElement.cells[0].firstChild.textContent = planet.name
 		rowElement.cells[1].firstChild.textContent = planet.size
 		rowElement.cells[2].firstChild.textContent = planet.moons
@@ -318,12 +319,18 @@
 	}
 	
 	function doUpdate(){
-		planet = getPlanetFromForm()
+		var planet = getPlanetFromForm()
 		var rowElement = document.getElementById(planet.name)
 		setPlanetInRow(rowElement, planet)
 		
 		clearAll()
 		showAll()
+	}
+	function doDelete(buttonElement){
+		console.log("ITEM DELETED")
+		var tableElement = document.getElementById('planetTable')
+		var index = buttonElement.parentNode.parentNode.rowIndex;
+		tableElement.deleteRow(index);
 	}
 
 </script>
