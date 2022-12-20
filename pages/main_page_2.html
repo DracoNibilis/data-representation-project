@@ -19,16 +19,21 @@
 		h1 { 
 			color: white;
 		}
-
+		h2 {
+			color: white;
+		}
 		p { 
 			color: white;
 		}
 		ul {
 			color: white;
 		}
+		div {
+			color: white;
+		}
 		table {
 			color: white;
-			width:1000px;
+			width:1200px;
 			padding: 0;
 			border: 10;
 			height: 100px;
@@ -36,20 +41,19 @@
 			font-family: "Lucida Console", "Courier New", monospace;
 			font-size: 20px;
 		}
-
-
-
     </style>
+</head>
+
 <body>
 
 	<!-- Header text -->
 	<h1 align="center"> PLANETS CONTEST </h1>
 	<!-- Top Image -->
-	<img src="images/planets.jpg" alt="Plantes_image">
+	<img src="images/planets.jpg" alt="Planets_image">
 	<!-- Text for header 2 -->
 	<h2 id="planets" align="center"> --== PLANETS ==--</h2>
 	
-	<!-- Button for ther page - in table -->
+	<!-- Button for the page - in table -->
 	<table border:30px solid black>
 		<tr>
 			<!-- Button for Page with Results -->
@@ -62,12 +66,14 @@
 	<!-- Planets-->
 	<p> RANKING OF PLANETS.</p>
 	
-	<div><button id="buttonShowCreate" onclick=showCreate()>CREATE</button></div>
-	<div> CHOOSE YOUR FAVORITE PLANET:
+	<div>
+		<button id="buttonShowCreate" onclick="showCreate()">CREATE</button>
+	</div>
 	
+	<div>
 		<!-- List of page elements -->
 		<table class="table" id="planetTable">
-			<tr>
+			<tr id="0">
 				<th> PLANET </th>
 				<th> SIZE </th>
 				<th> MOONS</th>
@@ -77,190 +83,248 @@
 				<th> DELETE</th>
 			</tr>
 			
-			<tr>
+			<tr id="1">
 				<td> MERCURY </td>
 				<td> 0.055 </td>
 				<td> 0 </td>
 				<td> 45.9–88.0 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="2">
 				<td> VENUS </td>
 				<td> 0.815 </td>
 				<td> 0 </td>
 				<td> 107.4–108.9 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="3">
 				<td> EARTH </td>
 				<td> 1 </td>
 				<td> 1 </td>
 				<td> 147.1–152.1 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="4">
 				<td> MARS </td>
 				<td> 0.107 </td>
 				<td> 2 </td>
 				<td> 206.7–249.2 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="5">
 				<td> JUPITER </td>
 				<td> 318 </td>
 				<td> 80 </td>
 				<td> 45.9–88.0 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="6">
 				<td> SATURN </td>
 				<td> 95 </td>
 				<td> 83 </td>
 				<td> 1.3576–1.5065 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="7">
 				<td> URANUS </td>
 				<td> 14 </td>
 				<td> 27 </td>
 				<td> 2.733–3.001 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="8">
 				<td> NEPTUNE </td>
 				<td> 17 </td>
 				<td> 14 </td>
 				<td> 4.471–4.558 million km</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
-			<tr>
+			<tr id="9">
 				<td> PLANET 9 </td>
 				<td> ??? </td>
 				<td> ???</td>
 				<td> ???</td>
-				<td> vote</td>
-				<td><button>update</button></td>
+				<td><button onclick="vote">vote</button></td>
+				<td><button onclick="showUpdate(this)">update</button></td>
 				<td><button>delete</button></td>
 			</tr>
 			
 		</table>
 	</div>
 	
-	<p>UPGRADE / CREATE YOUR OWN PLANET:</p>
 	<div id="createUpdateForm" style="display:none">
-		PLANET <input type="text" name="name"><br/>
-		SIZE <input type="number" name="size"><br/>
-		MOONS <input type="number" name="moons"><br/>
-		DISTANCE <input type="text" name="distance"><br/>
-		<span><button id="createLabel" onclick="doCreate()">CREATE</button></span>
-		<span><button id="updateLabel" onclick="doUpdate()">UPDATE</button></span>	
+		<h2>
+			<span id="createLabel">CREATE A</span>
+			<span id="updateLabel" style="display:none">UPDATE THIS</span> PLANET
+		</h2>
+		
+		PLANET  &nbsp; &nbsp; <input type="text" name="name"><br/>
+		SIZE  &nbsp; &nbsp; &nbsp;<input type="text" name="size"><br/>
+		MOONS  &nbsp; &nbsp; &nbsp;<input type="text" name="moons"><br/>
+		DISTANCE &nbsp; &nbsp; <input type="text" name="distance"><br/>
+		<span><button id="doCreateLabel" onclick="doCreate()">CREATE</button></span>
+		<span><button id="doUpdateLabel" onclick="doUpdate()">UPDATE</button></span>				
 	</div>
-	
-	<h2>
-	<span id="createLabel">CREATE A</span>
-	<span id="updateLabel" style="display:none">UPDATE THIS</span> PLANET
-	<h2>
-	
-	<!-- Link to source page --> 
-	<p align="center"> === All Rights Reserved <a href="https://solarsystem.nasa.gov/solar-system/sun/overview/">NASA</a> === 
-	
-	</p>
 
 </body>
+
+
 <script>
 	function showCreate(){
+		document.getElementById("createUpdateForm").style.display="block"
 		document.getElementById("buttonShowCreate").style.display="none"
-		document.getElementById("planetTable").style.display="none"
+		
+		document.getElementById("doCreateLabel").style.display="block"
+		document.getElementById("doUpdateLabel").style.display="none"
 		
 		document.getElementById("createLabel").style.display="inline"
 		document.getElementById("updateLabel").style.display="none"
 		
-		document.getElementById("doCreate").style.display="block"
-		document.getElementById("doUpdate").style.display="none"
+		document.getElementById("buttonShowCreate").style.display="none"
+		document.getElementById("planetTable").style.display="none"
 		
 	}
-	function getAll(callback){
-		$.ajax({
-			"url": "http://127.0.0.1:5000/main_page_2.html",
-			"method": "GET",
-			"data":"",
-			"dataType": "JSON",
-			"success":function(result){
-			callback(result)
-			},
-			"error":function(xhr,status,error){
-				console.log("error: "+status+" msg: "+error);
-				}
-			});
+	
+	function showUpdate(buttonElement){
+		document.getElementById("createUpdateForm").style.display="block"
+		
+		document.getElementById("doCreateLabel").style.display="none"
+		document.getElementById("doUpdateLabel").style.display="block"
+		
+		document.getElementById("createLabel").style.display="none"
+		document.getElementById("updateLabel").style.display="inline"
+		
+		document.getElementById("buttonShowCreate").style.display="none"
+		document.getElementById("planetTable").style.display="none"
+		
+		rowElement = buttonElement.parentNode.parentNode
+		planet = getPlanetFromRow(rowElement)
+		populateFormWithPlanet(planet)
+		console.log(planet)
+		
+	}
+	
+	function showAll(){
+		document.getElementById("createUpdateForm").style.display="none"
+		
+		document.getElementById("buttonShowCreate").style.display="block"
+		document.getElementById("planetTable").style.display="block"
+	}
+	
+	function clearAll(){
+		var form = document.getElementById("createUpdateForm")
+		form.querySelector('input[name="name"]').disabled = false
+		form.querySelector('input[name="name"]').value = ''
+		form.querySelector('input[name="size"]').value = ''
+		form.querySelector('input[name="moons"]').value = ''
+		form.querySelector('input[name="distance"]').value = ''
+		
+	}
+	
+	function getPlanetFromForm(){
+		var form = document.getElementById('createUpdateForm')
+		
+		var planet = {}
+		planet.name = form.querySelector('input[name="name"]').value
+		planet.size = form.querySelector('input[name="size"]').value
+		planet.moons = form.querySelector('input[name="moons"]').value
+		planet.distance = form.querySelector('input[name="distance"]').value
+		
+		//console.log(JSON.stringify(planet))
+		return planet
+	}
+	
+	function populateFormWithPlanet(planet){
+		var form = document.getElementById('createUpdateForm')
+		form.querySelector('input[name="name"]').disabled=true
+		form.querySelector('input[name="name"]').value = planet.name
+		form.querySelector('input[name="size"]').value = planet.size
+		form.querySelector('input[name="moons"]').value = planet.moons
+		form.querySelector('input[name="distance"]').value = planet.distance
+
+	}
+	function addPlanetToTable(planet){
+		var tableElement = document.getElementById('planetTable')
+		var rowElement = tableElement.insertRow(-1)
+		
+		var cell1 = rowElement.insertCell(0)
+		cell1.innerHTML = planet.name
+		var cell2 = rowElement.insertCell(1)
+		cell2.innerHTML = planet.size
+		var cell3 = rowElement.insertCell(2)
+		cell3.innerHTML = planet.moons
+		var cell4 = rowElement.insertCell(3)
+		cell4.innerHTML = planet.distance
+		// add cell for voting 
+		var cell5 = rowElement.insertCell(4)
+		cell5.innerHTML = '<button onclick="vote">vote</button>'
+		var cell6 = rowElement.insertCell(5)
+		cell6.innerHTML = '<button onclick="showUpdate(this)">update</button>'
+		var cell7 = rowElement.insertCell(6)
+		cell7.innerHTML = '<button onclick="doDelete(this)">delete</button>'
+		
+	}
+	
+	function getPlanetFromRow(rowElement){
+		var planet = {}
+		planet.name = rowElement.cells[0].firstChild.textContent
+		planet.size = rowElement.cells[1].firstChild.textContent
+		planet.moons = rowElement.cells[2].firstChild.textContent
+		planet.distance = rowElement.cells[3].firstChild.textContent
+		return planet
+	}
+	
+	
+	function setPlanetInRow(rowElement, planet){
+		var planet = {}
+		rowElement.cells[0].firstChild.textContent = planet.name
+		rowElement.cells[1].firstChild.textContent = planet.size
+		rowElement.cells[2].firstChild.textContent = planet.moons
+		rowElement.cells[3].firstChild.textContent = planet.distance
+		//return planet
+	}
+	
+	function doCreate(){
+		//clearAll()
+		planet = getPlanetFromForm()
+		addPlanetToTable(planet)
+		
+		showAll()
+		clearAll()
+	}
+	
+	function doUpdate(){
+		planet = getPlanetFromForm()
+		var rowElement = document.getElementById(planet.name)
+		setPlanetInRow(rowElement, planet)
+		
+		clearAll()
+		showAll()
 	}
 
-	
-	function processGetAll(result){
-		console.log("in process")
-		for(planet of result){
-			diplayPlanet = {}
-			displayPlanet.name = planet.name
-			displayPlanet.size = planet.size
-			displayPlanet.moons = planet.moons
-			displayPlanet.distance = planet.distance
-			console.log(displayPlanet)
-		}
-	}
-	getAll(processGetAll)
-	
-	function createPlanet(planet, callback){
-		$.ajax({
-			"url": "http://127.0.0.1:5000/main_page_2.html",
-			"method": "POST",
-			"data":JSON.stringify(planet),
-			"dataType": "JSON",
-			contentType: "application/json; charset=utf-8",
-			"success":function(result){
-			callback(result)
-			},
-			"error":function(xhr,status,error){
-				console.log("error: "+status+" msg: "+error);
-				}
-		});
-	}
-	
-	function processCreatePlanet(result){
-		console.log(result)
-			for(planet of result){
-			diplayPlanet = {}
-			displayPlanet.name = planet.name
-			displayPlanet.size = planet.size
-			displayPlanet.moons = planet.moons
-			displayPlanet.distance = planet.distance
-			console.log(displayPlanet)
-		}
-	}
-	
-	planet = {"name": "PROXIMA B", "size": 0.6, "moons": 2, "distance": "45.9–88.0 million km" }
-	createPlanet(planet, processCreatePlanet)
 </script>
 </html>
