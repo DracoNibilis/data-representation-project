@@ -1,0 +1,305 @@
+<html>
+    <head>
+        <title>Planets</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+        <style type="text/css">
+
+            body { 
+            margin: 0 auto;
+            width:1000px;
+            background-color: black;
+
+            }
+            h1 { 
+                background-color: black;
+                color: white;
+                
+            }
+            h2 {
+                background-color: black;
+                color: white;
+            }
+            p { 
+                background-color: black;
+                color: white;
+            }
+
+            div {
+                background-color: black;
+                color: white;
+            }
+            table {
+                width:1000px;
+            }
+
+        </style>
+ 
+    </head>
+    <body>
+        <h1 align="center" color="white"> -== PLANETS ==-</h1>
+        <img src="images/planets.jpg" alt="Planets_image">
+        <div>
+            <br/>
+            <h1 align="center">Collection of planets (not only Sun orbiting ) </h1>
+            <br/>
+        </div>
+        <div> <button id="showCreateButton" onclick="showCreate()">CREATE</button></div>
+        <div>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <div>
+            <table class="table table-dark table-hover" id="planetTable">
+                <thead class="thead-dark"></thead>
+                <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Size</th>
+                        <th>Moons</th>
+                        <th>Distance</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <img src="images/exoplanetsMM.jpg" alt="EPlanets_image">
+        <div id='createUpdateForm' style="display: none">
+                <h2><span id="createLabel">Create a</span> <span id="updateLabel">Update</span> Planet</h2>
+                ID <input type="hidden" name="id"/><br/>
+                Name <input type="text" name="name" /><br/>
+                Size <input type="text" name="size"/> <br/>
+                Moons <input type="number" name="moons"/> <br/>
+                Distance <input type="text" name="distance"/> <br/>
+                <span><button id="doCreateButton" onclick="doCreate()">CREATE</button></span>
+                <span><button id="doUpdateButton" onclick="doUpdate()">UPDATE</button></span>
+        </div>
+
+    <p align="center">
+         === All Rights Reserved  === <br/>
+         <a href="https://exoplanets.nasa.gov/">NASAExoplanets   </a> <a href="https://solarsystem.nasa.gov/">NASAPlanets</a>
+	</p>
+
+    </body>
+
+    <script>
+    function showCreate(){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('planetTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+
+        document.getElementById('createLabel').style.display="inline"
+        document.getElementById('updateLabel').style.display="none"
+
+        document.getElementById('doCreateButton').style.display="block"
+        document.getElementById('doUpdateButton').style.display="none"
+
+    }
+    function showViewAll(){
+        document.getElementById('showCreateButton').style.display="block"
+        document.getElementById('planetTable').style.display="block"
+        document.getElementById('createUpdateForm').style.display="none"
+    }
+    function showUpdate(buttonElement){
+        document.getElementById('showCreateButton').style.display="none"
+        document.getElementById('planetTable').style.display="none"
+        document.getElementById('createUpdateForm').style.display="block"
+
+        document.getElementById('createLabel').style.display="none"
+        document.getElementById('updateLabel').style.display="inline"
+
+        document.getElementById('doCreateButton').style.display="none"
+        document.getElementById('doUpdateButton').style.display="block"
+
+
+        var rowElement = buttonElement.parentNode.parentNode
+        // these is a way of finding the closest <tr> which would safer, closest()
+        
+        var planet = getPlanetFromRow(rowElement)
+        populateFormWithPlanet(planet)
+    }
+    function doCreate(){
+        var form = document.getElementById('createUpdateForm')
+
+        var planet = {}
+       
+        planet.name = form.querySelector('input[name="name"]').value
+        planet.size = form.querySelector('input[name="size"]').value
+        planet.moons = form.querySelector('input[name="moons"]').value
+        planet.distance = form.querySelector('input[name="distance"]').value
+        console.log(JSON.stringify(planet))
+        createPlanetAjax(planet)
+        
+        
+    }
+    function doUpdate(){
+        var planet = getPlanetFromForm();
+        var rowElement = document.getElementById(planet.id);
+        updatePlanetAjax(planet);
+        setPlanetInRow(rowElement,planet);
+       
+        clearForm();
+        showViewAll();
+    }
+    function doDelete(r){
+        var tableElement = document.getElementById('planetTable');
+        var rowElement = r.parentNode.parentNode;
+        var index = rowElement.rowIndex;
+        deletePlanetAjax(rowElement.getAttribute("id"));
+        tableElement.deleteRow(index);
+    }
+    function addPlanetToTable(planet){
+        var tableElement = document.getElementById('planetTable')
+        var rowElement = tableElement.insertRow(-1)
+        rowElement.setAttribute('id',planet.id)
+        var cell1 = rowElement.insertCell(0);
+        cell1.innerHTML = planet.id
+        var cell2 = rowElement.insertCell(1);
+        cell2.innerHTML = planet.name
+        var cell3 = rowElement.insertCell(2);
+        cell3.innerHTML = planet.size
+        var cell4 = rowElement.insertCell(3);
+        cell4.innerHTML = planet.moons
+        var cell5 = rowElement.insertCell(4);
+        cell5.innerHTML = planet.distance
+        var cell6 = rowElement.insertCell(5);
+        cell6.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
+        var cell7 = rowElement.insertCell(6);
+        cell7.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
+
+    }
+
+    function clearForm(){
+        var form = document.getElementById('createUpdateForm')
+
+        form.querySelector('input[name="name"]').value=''
+        form.querySelector('input[name="size"]').value=''
+        form.querySelector('input[name="moons"]').value=''
+        form.querySelector('input[name="distance"]').value=''
+    }
+    function getPlanetFromRow(rowElement){
+        var planet ={}
+        planet.id  = rowElement.getAttribute('id')
+        planet.name = rowElement.cells[1].firstChild.textContent
+        planet.size = rowElement.cells[2].firstChild.textContent
+        planet.moons = parseInt(rowElement.cells[3].firstChild.textContent,10)
+        planet.distance = rowElement.cells[4].firstChild.textContent
+        return planet
+    }
+    function setPlanetInRow(rowElement, planet){
+        rowElement.cells[0].firstChild.textContent= planet.id  
+        rowElement.cells[1].firstChild.textContent= planet.name 
+        rowElement.cells[2].firstChild.textContent= planet.size
+        rowElement.cells[3].firstChild.textContent= planet.moons
+        rowElement.cells[4].firstChild.textContent= planet.distance
+    }
+    function populateFormWithPlanet(planet){
+        var form = document.getElementById('createUpdateForm')
+        
+        form.querySelector('input[name="id"]').disabled = true
+        form.querySelector('input[name="name"]').disabled = true
+        form.querySelector('input[name="id"]').value  = planet.id
+        form.querySelector('input[name="name"]').value = planet.name
+        form.querySelector('input[name="size"]').value = planet.size
+        form.querySelector('input[name="moons"]').value = planet.moons
+        form.querySelector('input[name="distance"]').value = planet.distance
+        return planet
+    }
+    function getPlanetFromForm(){
+        var form = document.getElementById('createUpdateForm')
+        var planet = {}
+        planet.id = form.querySelector('input[name="id"]').value
+        planet.name = form.querySelector('input[name="name"]').value
+        planet.size = form.querySelector('input[name="size"]').value
+        planet.moons = parseInt(form.querySelector('input[name="moons"]').value,10)
+        planet.distance = form.querySelector('input[name="distance"]').value
+        console.log(JSON.stringify(planet))
+        return planet
+    }
+    function getAllAjax(){
+        $.ajax({
+            "url": "http://127.0.0.1:5000/planets",
+            "method":"GET",
+            "data":"",
+            "dataType": "JSON",
+            "success":function(result){
+                //console.log(result);
+                for (planet of result){
+                    addPlanetToTable(planet);
+                }
+                
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+
+    }
+    function createPlanetAjax(planet){
+        console.log(JSON.stringify(planet));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/planets",
+            "method":"POST",
+            "data":JSON.stringify(planet),
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+                //console.log(result);
+                planet.id = result.id
+                addPlanetToTable(planet)
+                clearForm()
+                showViewAll()
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+    function updatePlanetAjax(planet){
+        console.log(JSON.stringify(planet));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/planets/"+encodeURI(planet.id),
+            "method":"PUT",
+            "data":JSON.stringify(planet),
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+               // console.log(result);
+                  
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+    function deletePlanetAjax(id){
+        
+        //console.log(JSON.stringify('deleting '+id));
+        $.ajax({
+            "url": "http://127.0.0.1:5000/planets/"+encodeURI(id),
+            "method":"DELETE",
+            "data":"",
+            "dataType": "JSON",
+            contentType: "application/json; charset=utf-8",
+            "success":function(result){
+                //console.log(result);
+                  
+            },
+            "error":function(xhr,status,error){
+                console.log("error: "+status+" msg:"+error);
+            }
+        });
+    }
+    getAllAjax();
+  
+
+    
+    </script>
+</html>
