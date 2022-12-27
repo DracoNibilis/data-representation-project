@@ -28,7 +28,8 @@ class PlanetDAO:
     def closeAll(self):
         self.connection.close()
         self.cursor.close()
-         
+    
+    # Add planet to database table.
     def create(self, values):
         cursor = self.getcursor()
         sql="insert into planets (name, size, moons, distance) values (%s,%s,%s,%s)"
@@ -39,6 +40,7 @@ class PlanetDAO:
         self.closeAll()
         return newid
 
+    # Get all data from planets table.
     def getAll(self):
         cursor = self.getcursor()
         sql="select * from planets"
@@ -53,6 +55,7 @@ class PlanetDAO:
         self.closeAll()
         return returnArray
 
+    # Find planet by id.
     def findByID(self, id):
         cursor = self.getcursor()
         sql="select * from planets where id = %s"
@@ -64,13 +67,15 @@ class PlanetDAO:
         self.closeAll()
         return returnvalue
 
+    # Update planet in database table.
     def update(self, values):
         cursor = self.getcursor()
         sql="update planets set name=%s, size=%s, moons=%s, distance=%s where id = %s"
         cursor.execute(sql, values)
         self.connection.commit()
         self.closeAll()
-        
+
+    # Delete planet from database table.  
     def delete(self, id):
         cursor = self.getcursor()
         sql="delete from planets where id=%s"

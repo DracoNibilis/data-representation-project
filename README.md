@@ -17,3 +17,9 @@ Imported libraries to run Python scripts:
 - from flask import Flask, jsonify, request, abort.
 
 
+Enviroments:
+- Database is create and run on MySQL provided by Wampserver all installation files available on https://wampserver.aviatechno.net/
+- Python scripts are written and run on Python 3.8.8  by Visual Studio Code version 1.74.2.
+
+
+

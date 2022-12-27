@@ -14,6 +14,7 @@
             margin: 0 auto;
             width:1000px;
             background-color: black;
+            font-family: 'georgia', serif;
 
             }
             h1 { 
@@ -46,9 +47,10 @@
         <img src="images/planets.jpg" alt="Planets_image">
         <div>
             <br/>
-            <h1 align="center">Collection of planets (not only Sun orbiting ) </h1>
+            <h1 align="center">Collection of planets </h1>
             <br/>
         </div>
+        <div>Add new planet to the list:</div>
         <div> <button id="showCreateButton" onclick="showCreate()">CREATE</button></div>
         <div>
             <br/>
@@ -100,13 +102,14 @@
 
         document.getElementById('doCreateButton').style.display="block"
         document.getElementById('doUpdateButton').style.display="none"
-
     }
+
     function showViewAll(){
         document.getElementById('showCreateButton').style.display="block"
         document.getElementById('planetTable').style.display="block"
         document.getElementById('createUpdateForm').style.display="none"
     }
+
     function showUpdate(buttonElement){
         document.getElementById('showCreateButton').style.display="none"
         document.getElementById('planetTable').style.display="none"
@@ -118,16 +121,14 @@
         document.getElementById('doCreateButton').style.display="none"
         document.getElementById('doUpdateButton').style.display="block"
 
-
         var rowElement = buttonElement.parentNode.parentNode
-        // these is a way of finding the closest <tr> which would safer, closest()
         
         var planet = getPlanetFromRow(rowElement)
         populateFormWithPlanet(planet)
     }
+
     function doCreate(){
         var form = document.getElementById('createUpdateForm')
-
         var planet = {}
        
         planet.name = form.querySelector('input[name="name"]').value
@@ -135,10 +136,9 @@
         planet.moons = form.querySelector('input[name="moons"]').value
         planet.distance = form.querySelector('input[name="distance"]').value
         console.log(JSON.stringify(planet))
-        createPlanetAjax(planet)
-        
-        
+        createPlanetAjax(planet)  
     }
+
     function doUpdate(){
         var planet = getPlanetFromForm();
         var rowElement = document.getElementById(planet.id);
@@ -148,6 +148,7 @@
         clearForm();
         showViewAll();
     }
+
     function doDelete(r){
         var tableElement = document.getElementById('planetTable');
         var rowElement = r.parentNode.parentNode;
@@ -155,6 +156,7 @@
         deletePlanetAjax(rowElement.getAttribute("id"));
         tableElement.deleteRow(index);
     }
+
     function addPlanetToTable(planet){
         var tableElement = document.getElementById('planetTable')
         var rowElement = tableElement.insertRow(-1)
@@ -173,7 +175,6 @@
         cell6.innerHTML = '<button onclick="showUpdate(this)">Update</button>'
         var cell7 = rowElement.insertCell(6);
         cell7.innerHTML = '<button onclick=doDelete(this)>Delete</button>'
-
     }
 
     function clearForm(){
@@ -184,6 +185,7 @@
         form.querySelector('input[name="moons"]').value=''
         form.querySelector('input[name="distance"]').value=''
     }
+
     function getPlanetFromRow(rowElement){
         var planet ={}
         planet.id  = rowElement.getAttribute('id')
@@ -193,6 +195,7 @@
         planet.distance = rowElement.cells[4].firstChild.textContent
         return planet
     }
+
     function setPlanetInRow(rowElement, planet){
         rowElement.cells[0].firstChild.textContent= planet.id  
         rowElement.cells[1].firstChild.textContent= planet.name 
@@ -200,6 +203,7 @@
         rowElement.cells[3].firstChild.textContent= planet.moons
         rowElement.cells[4].firstChild.textContent= planet.distance
     }
+
     function populateFormWithPlanet(planet){
         var form = document.getElementById('createUpdateForm')
         
@@ -212,6 +216,7 @@
         form.querySelector('input[name="distance"]').value = planet.distance
         return planet
     }
+
     function getPlanetFromForm(){
         var form = document.getElementById('createUpdateForm')
         var planet = {}
@@ -223,6 +228,7 @@
         console.log(JSON.stringify(planet))
         return planet
     }
+
     function getAllAjax(){
         $.ajax({
             "url": "http://127.0.0.1:5000/planets",
@@ -230,18 +236,16 @@
             "data":"",
             "dataType": "JSON",
             "success":function(result){
-                //console.log(result);
                 for (planet of result){
                     addPlanetToTable(planet);
-                }
-                
+                }   
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
             }
         });
-
     }
+
     function createPlanetAjax(planet){
         console.log(JSON.stringify(planet));
         $.ajax({
@@ -262,6 +266,7 @@
             }
         });
     }
+
     function updatePlanetAjax(planet){
         console.log(JSON.stringify(planet));
         $.ajax({
@@ -270,18 +275,15 @@
             "data":JSON.stringify(planet),
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
-            "success":function(result){
-               // console.log(result);
-                  
+            "success":function(result){    
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
             }
         });
     }
+
     function deletePlanetAjax(id){
-        
-        //console.log(JSON.stringify('deleting '+id));
         $.ajax({
             "url": "http://127.0.0.1:5000/planets/"+encodeURI(id),
             "method":"DELETE",
@@ -289,17 +291,14 @@
             "dataType": "JSON",
             contentType: "application/json; charset=utf-8",
             "success":function(result){
-                //console.log(result);
-                  
             },
             "error":function(xhr,status,error){
                 console.log("error: "+status+" msg:"+error);
             }
         });
     }
+
     getAllAjax();
   
-
-    
     </script>
 </html>

@@ -3,25 +3,24 @@ from planetDAO import planetsDAO
 
 app = Flask(__name__, static_url_path='', static_folder='.')
 
-#curl "http://127.0.0.1:5000/planets"
+# Get all planets from table.
 @app.route('/planets')
 def getAll():
     results = planetsDAO.getAll()
     return jsonify(results)
 
-#curl "http://127.0.0.1:5000/books/2"
+# Get  planet by id.
 @app.route('/planets/<int:id>')
 def findById(id):
     foundPlanet = planetsDAO.findByID(id)
     return jsonify(foundPlanet)
 
-#curl  -i -H "Content-Type:application/json" -X POST -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books
+# Add planet to table.
 @app.route('/planets', methods=['POST'])
 def create():
     
     if not request.json:
         abort(400)
-    # other checking 
     planet = {
         "name": request.json['name'],
         "size": request.json['size'],
@@ -33,7 +32,7 @@ def create():
     planet['id'] = newId
     return jsonify(planet)
 
-#curl  -i -H "Content-Type:application/json" -X PUT -d "{\"title\":\"hello\",\"author\":\"someone\",\"price\":123}" http://127.0.0.1:5000/books/1
+# Update planet in table.
 @app.route('/planets/<int:id>', methods=['PUT'])
 def update(id):
     foundPlanet = planetsDAO.findByID(id)
@@ -58,16 +57,11 @@ def update(id):
     planetsDAO.update(values)
     return jsonify(foundPlanet)
         
-
-    
-
+# Delete planet from table.
 @app.route('/planets/<int:id>' , methods=['DELETE'])
 def delete(id):
     planetsDAO.delete(id)
     return jsonify({"done":True})
-
-
-
 
 if __name__ == '__main__' :
     app.run(debug= True)
