@@ -9,7 +9,8 @@ Files included:
 - server.py - Python script to connect with server,
 - .gitignore - file contains all files that are not display in repository,
 - images folder - contains images used on web page, 
-- README.md .
+- README.md,
+- datarepresentation folder - database created in MySQL contains table used in this project.
 
 Imported libraries to run Python scripts:
 - mysql.connector
