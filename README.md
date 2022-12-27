@@ -1,7 +1,8 @@
 # data-representation-project
 ------
+------
 
-Repositorium contains Web application in Flask that has a RESTful API and is linked to database. Web page consume the API and performs CRUD operations on data.
+Repository contains Web application in Flask that has a RESTful API and is linked to database. Web page consume the API and performs CRUD operations on data.
 
 ------
 Files included:
@@ -27,5 +28,6 @@ Environments:
 - Python scripts are written and run on Python 3.8.8  by Visual Studio Code version 1.74.2.
 - VM - Script was run on virtual environment, to run code please run - pip install -r requirements.txt to get all nessesary Python packedges.
 
-
+------
+------
 
