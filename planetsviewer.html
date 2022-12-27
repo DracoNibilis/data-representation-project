@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Planets</title>
+        <!-- AJAX -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +19,7 @@
 
             }
             h1 { 
+                font-family: 'georgia', serif;
                 background-color: black;
                 color: white;
                 
@@ -27,6 +29,7 @@
                 color: white;
             }
             p { 
+                font-family: 'georgia', serif;
                 background-color: black;
                 color: white;
             }
@@ -43,18 +46,19 @@
  
     </head>
     <body>
-        <h1 align="center" color="white"> -== PLANETS ==-</h1>
+        <h1 align="center" color="white"> ----- </h1>
         <img src="images/planets.jpg" alt="Planets_image">
         <div>
             <br/>
-            <h1 align="center">Collection of planets </h1>
+            <h1 align="center">-== PLANETS ==-</h1>
             <br/>
         </div>
-        <div>Add new planet to the list:</div>
+        <div>Add new planet:</div>
         <div> <button id="showCreateButton" onclick="showCreate()">CREATE</button></div>
         <div>
             <br/>
             <br/>
+            <p align="center">Table contains list of planets, those in our Solar System and beyond. <br/>Feel free to add new one! <br/> Table provides information about planet name, size (EM - Earth Mass or JM - Jupiter Mass), amount of moons, distance from the Star ( AU - Astronomical Units).<br/> Also data can be update and planet can be deleted.<br/> Enjoy! </p>
             <br/>
         </div>
         <div>
