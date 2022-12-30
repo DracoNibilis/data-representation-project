@@ -235,7 +235,7 @@
 
     function getAllAjax(){
         $.ajax({
-            "url": "/planets",
+            "url": "http://127.0.0.1:5000/planets",
             "method":"GET",
             "data":"",
             "dataType": "JSON",
@@ -253,7 +253,7 @@
     function createPlanetAjax(planet){
         console.log(JSON.stringify(planet));
         $.ajax({
-            "url": "/planets",
+            "url": "http://127.0.0.1:5000/planets",
             "method":"POST",
             "data":JSON.stringify(planet),
             "dataType": "JSON",
@@ -274,7 +274,7 @@
     function updatePlanetAjax(planet){
         console.log(JSON.stringify(planet));
         $.ajax({
-            "url": "/planets/"+encodeURI(planet.id),
+            "url": "http://127.0.0.1:5000/planets"+encodeURI(planet.id),
             "method":"PUT",
             "data":JSON.stringify(planet),
             "dataType": "JSON",
@@ -289,7 +289,7 @@
 
     function deletePlanetAjax(id){
         $.ajax({
-            "url": "/planets/"+encodeURI(id),
+            "url": "http://127.0.0.1:5000/planets"+encodeURI(id),
             "method":"DELETE",
             "data":"",
             "dataType": "JSON",
