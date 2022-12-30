@@ -2,7 +2,7 @@
 ------
 ------
 
-Repository contains Web application in Flask that has a RESTful API and is linked to database. Web page consume the API and performs CRUD operations on data.
+Repository contains Web application in Flask that has a RESTful API and is linked to database. Web page consume the API and performs CRUD operations on data. Application is 
 
 ------
 Files included:
